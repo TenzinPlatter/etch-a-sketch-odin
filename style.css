@@ -6,10 +6,6 @@
 	display: flex;
 }
 
-.hovered {
-	background-color: grey;
-}
-
 body {
 	display: flex;
 	gap: 32px;

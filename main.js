@@ -20,8 +20,19 @@ function getGridSquare(size) {
 	const gridSquare = document.createElement("div");
 	gridSquare.classList.add("grid-square");
 	gridSquare.addEventListener("mouseover", () => {
-		gridSquare.classList.add("hovered");
+		if (gridSquare.style.backgroundColor == "") {
+			hoveredSquare(gridSquare);
+			return
+		} 
+
+		const currOpacity = parseFloat(gridSquare.style.opacity);
+		if (currOpacity == 1) {
+			return;	
+		}
+		const newOpacity = currOpacity + 0.2;
+		gridSquare.style.opacity = newOpacity.toString();
 	})
+
 	gridSquare.style.width = `${size}px`;
 	gridSquare.style.height = `${size}px`;
 
@@ -30,6 +41,7 @@ function getGridSquare(size) {
 
 function replaceGrid(newGrid) {
 	const oldGrid = document.querySelector(".grid-container")
+	const body = document.querySelector("body");
 	body.replaceChild(newGrid, oldGrid);
 }
 
@@ -55,7 +67,15 @@ function getGridButton() {
 	return newGridButton;
 }
 
-function init() {
+function hoveredSquare(square) {
+	const r = Math.random() * 255;
+	const g = Math.random() * 255;
+	const b = Math.random() * 255;
+	square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+	square.style.opacity = "0.1";
+}
+
+function init(body) {
 	const grid = getGrid(16);
 	const newGridButton = getGridButton();
 	
@@ -65,4 +85,4 @@ function init() {
 
 
 const body = document.querySelector("body");
-init();
+init(body);
