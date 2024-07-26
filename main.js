@@ -1,4 +1,5 @@
 function getGrid(gridSize) {
+	currentGridSize = gridSize;
 	const gridContainer = document.createElement('div');
 	gridContainer.classList.add("grid-container")
 	const squareSize = 960 / gridSize;
@@ -92,6 +93,11 @@ function getClearButton() {
 	button.classList.add("clear");
 	button.textContent = "Clear Grid";
 
+	button.addEventListener("click", () => {
+		const clearGrid = getGrid(currentGridSize);
+		replaceGrid(clearGrid);
+	})
+
 	return button;
 }
 
@@ -105,4 +111,5 @@ function init(body) {
 
 
 const body = document.querySelector("body");
+let currentGridSize = 16;
 init(body);
