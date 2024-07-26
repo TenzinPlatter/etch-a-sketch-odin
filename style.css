@@ -1,0 +1,24 @@
+.grid-square {
+	outline: 1px solid red;
+}
+
+.grid-container {
+	display: flex;
+}
+
+.hovered {
+	background-color: grey;
+}
+
+body {
+	display: flex;
+	gap: 32px;
+}
+
+button.new-grid {
+	border-radius: 8px;
+	background: darkblue;
+	color: white;
+	width: 100px;
+	height: 40px;
+}
