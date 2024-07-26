@@ -50,12 +50,12 @@ function getGridButton() {
 	const newGridButton = document.createElement("button");
 	newGridButton.addEventListener("click", () => {
 		let newSize = parseInt(
-			prompt("What size would you like your new grid to be? (Max 100)")
+			prompt("What size would you like your new grid to be? (1 - 100)")
 		);
 
-		while (newSize > 100) {
+		while (newSize > 100 || gridSize < 0) {
 			newSize = parseInt(
-				prompt("Sorry, grid size cannot be over 100. Please try again.")
+				prompt("Sorry, that is an invalid size. Please try again.")
 			);
 		}
 
