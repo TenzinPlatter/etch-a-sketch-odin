@@ -74,13 +74,33 @@ function hoveredSquare(square) {
 	square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 	square.style.opacity = "0.1";
 }
+function getButtons() {
+	const newGridButton = getGridButton();
+	const clearGridButton = getClearButton();
+
+	const container = document.createElement('div');
+	container.classList.add("buttons-container");
+
+	container.appendChild(newGridButton);
+	container.appendChild(clearGridButton);
+
+	return container;
+}
+
+function getClearButton() {
+	const button = document.createElement("button");
+	button.classList.add("clear");
+	button.textContent = "Clear Grid";
+
+	return button;
+}
 
 function init(body) {
 	const grid = getGrid(16);
-	const newGridButton = getGridButton();
+	const buttons = getButtons();
 	
 	body.appendChild(grid);
-	body.appendChild(newGridButton);
+	body.appendChild(buttons)
 }
 
 
